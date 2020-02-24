@@ -10,39 +10,32 @@ import java.awt.image.BufferedImage;
  * Created By: Assaf, On 24/02/2020
  * Description:
  */
-public class GraphicPC extends GraphicEngine
+public class GraphicPC extends JPanel implements GraphicEngine
 {
     private Graphics2D graphics;
     private BufferedImage buffer;
-    private JPanel panel;
 
     private int width;
     private int height;
 
     public GraphicPC(int width, int height)
     {
+        super();
         this.width = width;
         this.height = height;
 
         buffer = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         graphics = (Graphics2D) buffer.getGraphics();
-        panel = new JPanel();
 
-        panel.setPreferredSize(new Dimension(width,height));
-        panel.setFocusable(true);
-        panel.requestFocus();
-    }
-
-    public JPanel getPanel() {return panel;}
-
-    @Override
-    public void setVisible(boolean b) {
-        panel.setVisible(true);
+        setPreferredSize(new Dimension(width,height));
+        setFocusable(true);
+        requestFocus();
     }
 
     public void drawToScreen()
     {
-        Graphics graphics2 = panel.getGraphics();
+        Graphics graphics2 = getGraphics();
+
         graphics2.drawImage(buffer,0,0,width,height,null);
         graphics2.dispose();
     }

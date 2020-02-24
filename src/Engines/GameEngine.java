@@ -23,10 +23,8 @@ public abstract class GameEngine implements Runnable
     private final int MAXFPS = 1000;
     private final long sleepTime = 1000 / MAXFPS;
 
-    public GameEngine(Game game, GraphicEngine graphicEngine)
+    public GameEngine(Game game)
     {
-        this.graphicEngine = graphicEngine;
-
         currentGame = game;
     }
 
@@ -38,6 +36,7 @@ public abstract class GameEngine implements Runnable
     }
 
     public abstract void setTitle(String title);
+    public abstract void setVisible(boolean b);
 
     @Override
     public void run()
@@ -45,7 +44,7 @@ public abstract class GameEngine implements Runnable
         if(!currentGame.onCreate()) return;
 
         // Start
-        graphicEngine.setVisible(true);
+        setVisible(true);
 
         long timeStamp;
         long lastTimeStamp = System.currentTimeMillis();
