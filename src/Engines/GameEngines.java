@@ -1,7 +1,7 @@
 package Engines;
 
+import Engines.Engine.GameEngine;
 import Engines.PC.EnginePC;
-import Engines.PC.GraphicPC;
 
 /**
  * Created By: Assaf, On 24/02/2020

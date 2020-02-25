@@ -1,4 +1,6 @@
-package Engines;
+package Engines.Engine;
+
+import Engines.Game;
 
 /**
  * Created By: Assaf, On 23/02/2020
@@ -6,7 +8,7 @@ package Engines;
  */
 public abstract class GameEngine implements Runnable
 {
-    private Game currentGame;
+    protected Game currentGame;
 
     // dimensions and information
     private int screenWidth;

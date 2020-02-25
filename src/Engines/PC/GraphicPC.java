@@ -1,6 +1,6 @@
 package Engines.PC;
 
-import Engines.GraphicEngine;
+import Engines.Engine.GraphicEngine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,31 +10,28 @@ import java.awt.image.BufferedImage;
  * Created By: Assaf, On 24/02/2020
  * Description:
  */
-public class GraphicPC extends JPanel implements GraphicEngine
+public class GraphicPC implements GraphicEngine
 {
     private Graphics2D graphics;
     private BufferedImage buffer;
+    private JPanel panel;
 
     private int width;
     private int height;
 
-    public GraphicPC(int width, int height)
+    public GraphicPC(int width, int height, JPanel panel)
     {
-        super();
         this.width = width;
         this.height = height;
+        this.panel = panel;
 
         buffer = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         graphics = (Graphics2D) buffer.getGraphics();
-
-        setPreferredSize(new Dimension(width,height));
-        setFocusable(true);
-        requestFocus();
     }
 
     public void drawToScreen()
     {
-        Graphics graphics2 = getGraphics();
+        Graphics graphics2 = panel.getGraphics();
 
         graphics2.drawImage(buffer,0,0,width,height,null);
         graphics2.dispose();

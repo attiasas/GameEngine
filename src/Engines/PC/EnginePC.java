@@ -1,8 +1,11 @@
 package Engines.PC;
 
 import Engines.*;
+import Engines.Engine.GameEngine;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * Created By: Assaf, On 24/02/2020
@@ -11,6 +14,7 @@ import javax.swing.*;
 public class EnginePC extends GameEngine
 {
     private JFrame frame;
+    private JPanel panel;
 
     public EnginePC(Game game)
     {
@@ -19,15 +23,24 @@ public class EnginePC extends GameEngine
 
     public void constructFrame(int width, int height, String title)
     {
-        graphicEngine = new GraphicPC(width,height);
+        panel = new JPanel();
+
+        panel.setPreferredSize(new Dimension(width,height));
+        panel.setFocusable(true);
+        panel.requestFocus();
+
+        if(currentGame instanceof KeyListener) panel.addKeyListener((KeyListener) currentGame);
+        if(currentGame instanceof MouseListener) panel.addMouseListener((MouseListener) currentGame);
+        if(currentGame instanceof MouseMotionListener) panel.addMouseMotionListener((MouseMotionListener)currentGame);
+
+        graphicEngine = new GraphicPC(width,height,panel);
 
         frame = new JFrame();
-
         frame.setBounds(0,0,width,height);
         frame.setTitle(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setContentPane(((GraphicPC)graphicEngine));
+        frame.setContentPane(panel);
 
         setScreenWidth(width);
         setScreenHeight(height);
