@@ -1,7 +1,7 @@
 package Engines.Engine;
 
 import Engines.Game;
-import Utils.UI.Components.UIManager;
+import Utils.GUI.UI.UIManager;
 
 /**
  * Created By: Assaf, On 23/02/2020

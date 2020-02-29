@@ -1,4 +1,4 @@
-package Utils.UI.Components;
+package Utils.GUI.UI;
 
 import Engines.Engine.GraphicEngine;
 
@@ -9,7 +9,6 @@ public abstract class UIContainer extends UIComponent
 {
     protected ArrayList<UIComponent> components;
     public int margin;
-    public int padding;
 
     public UIContainer(Rectangle position)
     {
@@ -29,6 +28,15 @@ public abstract class UIContainer extends UIComponent
     public void removeComponent(UIComponent component)
     {
         components.remove(component);
+    }
+
+    @Override
+    public void build(GraphicEngine graphicEngine)
+    {
+        for(int i = 0; i < components.size(); i++)
+        {
+            components.get(i).build(graphicEngine);
+        }
     }
 
     @Override
@@ -56,7 +64,6 @@ public abstract class UIContainer extends UIComponent
             UIComponent component = components.get(i);
             if(component.show)
             {
-                graphic.setColor(component.color);
                 component.draw(graphic);
             }
         }

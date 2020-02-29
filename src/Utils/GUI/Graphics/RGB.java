@@ -1,4 +1,4 @@
-package Utils.UI.Graphics;
+package Utils.GUI.Graphics;
 
 import java.util.Objects;
 

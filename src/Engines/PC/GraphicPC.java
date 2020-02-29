@@ -1,7 +1,7 @@
 package Engines.PC;
 
 import Engines.Engine.GraphicEngine;
-import Utils.UI.Graphics.RGB;
+import Utils.GUI.Graphics.RGB;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
-package Utils.UI.Components;
+package Utils.GUI.UI;
 
 import Engines.Engine.GraphicEngine;
-import Utils.UI.Graphics.RGB;
+import Utils.GUI.Graphics.RGB;
 
 import java.awt.*;
 
@@ -12,6 +12,7 @@ public abstract class UIComponent
     private final int ID;
 
     public Rectangle position;
+    public int padding;
     public RGB color;
     public boolean show;
 

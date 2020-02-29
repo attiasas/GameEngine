@@ -1,4 +1,4 @@
-package Utils.UI.Components;
+package Utils.GUI.UI;
 
 import Engines.Engine.GraphicEngine;
 

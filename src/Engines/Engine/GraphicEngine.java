@@ -1,6 +1,6 @@
 package Engines.Engine;
 
-import Utils.UI.Graphics.RGB;
+import Utils.GUI.Graphics.RGB;
 
 import java.awt.*;
 
