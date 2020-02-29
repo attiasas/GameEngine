@@ -1,6 +1,7 @@
 package Engines.PC;
 
 import Engines.Engine.GraphicEngine;
+import Utils.UI.Graphics.RGB;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,16 +44,9 @@ public class GraphicPC implements GraphicEngine
         graphics.setColor(new java.awt.Color(r,g,b));
     }
     @Override
-    public void setColor(Colors color)
+    public void setColor(RGB color)
     {
-        switch (color)
-        {
-            case BLACK: graphics.setColor(java.awt.Color.BLACK); break;
-            case WHITE: graphics.setColor(java.awt.Color.WHITE); break;
-            case RED:   graphics.setColor(java.awt.Color.RED); break;
-            case BLUE:  graphics.setColor(java.awt.Color.BLUE); break;
-            case GREEN: graphics.setColor(java.awt.Color.GREEN); break;
-        }
+        setColor(color.r,color.g,color.b);
     }
     @Override
     public void setFont(String name, int style, int size)
@@ -88,5 +82,11 @@ public class GraphicPC implements GraphicEngine
     public void fillRectangle(float x, float y, float w, float h)
     {
         graphics.fillRect((int)x,(int)y,(int)w,(int)h);
+    }
+
+    @Override
+    public void fillRectangle(Rectangle rectangle)
+    {
+        fillRectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height);
     }
 }

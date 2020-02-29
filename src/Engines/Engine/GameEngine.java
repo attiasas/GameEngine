@@ -1,6 +1,7 @@
 package Engines.Engine;
 
 import Engines.Game;
+import Utils.UI.Components.UIManager;
 
 /**
  * Created By: Assaf, On 23/02/2020
@@ -16,7 +17,7 @@ public abstract class GameEngine implements Runnable
     public String gameTitle;
 
     // graphics
-    protected GraphicEngine graphicEngine;
+    public GraphicEngine graphicEngine;
 
     // game Thread
     private Thread thread;
@@ -43,7 +44,10 @@ public abstract class GameEngine implements Runnable
     @Override
     public void run()
     {
+        // init
         if(!currentGame.onCreate()) return;
+
+        UIManager.set(graphicEngine);
 
         // Start
         setVisible(true);
