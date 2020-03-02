@@ -2,10 +2,20 @@
 The official distribution of the Games ToolKit, the toolkit will expend while i keep developing games in java.
 
 **Provides a fast, cross platform, Developing Tool For Games in Java**
-* **GameState** - The interface that needs to be implemnted for the game development.
-* Game Engine - Easy to use game Engine that can run GameStates
+
+* Project most recent jar (version 1.0.0) : **<Will be provided in the future>**
+* Template Project for Developing a game with the engine : **<Will be provided in the future>**
 
 # Documentation
+Basic Summary of All The Tools that the project includes, for more information check the JavaDocs: **<Will be provided in the future>**
+
+## Engine
+**Game Engine** - Running and managing all aspects of the game:
+* ***GameStates***
+* ***UIManager***
+
+## Utils
+**Tools** - Other Optional tools
 
 # License
 
