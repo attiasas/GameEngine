@@ -1,7 +1,7 @@
-package Utils.GUI.UI.Components;
+package GTK.Utils.GUI.UI.Components;
 
-import Utils.GUI.UI.UIActionListener;
-import Utils.GUI.UI.UIComponent;
+import GTK.Utils.GUI.UI.UIActionListener;
+import GTK.Utils.GUI.UI.UIComponent;
 
 import java.awt.*;
 

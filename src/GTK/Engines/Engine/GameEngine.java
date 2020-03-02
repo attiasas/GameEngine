@@ -1,7 +1,10 @@
-package Engines.Engine;
+package GTK.Engines.Engine;
 
-import Engines.Game;
-import Utils.GUI.UI.UIManager;
+import GTK.Engines.Engine.IO.ActionEvent;
+import GTK.Engines.GameState.GameState;
+import GTK.Engines.GameState.GameStateManager;
+import GTK.Engines.GameState.GameStates;
+import GTK.Utils.GUI.UI.UIManager;
 
 /**
  * Created By: Assaf, On 23/02/2020
@@ -9,7 +12,8 @@ import Utils.GUI.UI.UIManager;
  */
 public abstract class GameEngine implements Runnable
 {
-    protected Game currentGame;
+    private GameState startGameState;
+    protected GameStateManager manager;
 
     // dimensions and information
     private int screenWidth;
@@ -23,19 +27,20 @@ public abstract class GameEngine implements Runnable
     private Thread thread;
     private volatile boolean running;
     private long startTime;
-    private final int MAXFPS = 1000;
-    private final long sleepTime = 1000 / MAXFPS;
+    private final int MAX_FPS = 1000;
+    private final long sleepTime = 1000 / MAX_FPS;
 
-    public GameEngine(Game game)
+    public GameEngine(GameStateManager manager, GameState gameState)
     {
-        currentGame = game;
+        startGameState = gameState;
+        this.manager = manager;
     }
 
     public abstract void constructFrame(int width, int height, String title);
 
     public void constructFrame(int width, int height)
     {
-        constructFrame(width,height, "5m1l3 Engines");
+        constructFrame(width,height, "5m1l3 GTK.Engines");
     }
 
     public abstract void setTitle(String title);
@@ -45,7 +50,9 @@ public abstract class GameEngine implements Runnable
     public void run()
     {
         // init
-        if(!currentGame.onCreate()) return;
+        GameStates.setManager(manager);
+
+        if(!manager.showState(startGameState)) return;
 
         UIManager.set(graphicEngine);
 
@@ -68,9 +75,9 @@ public abstract class GameEngine implements Runnable
 
             try
             {
-                running = currentGame.onUpdate(elapsed);
+                running = manager.onUpdate(elapsed);
 
-                currentGame.draw(graphicEngine);
+                manager.draw(graphicEngine);
 
                 graphicEngine.drawToScreen();
             }
@@ -88,6 +95,8 @@ public abstract class GameEngine implements Runnable
 
             lastTimeStamp = timeStamp;
         }
+
+        manager.clearAll();
     }
 
     public void stop() { running = false; }

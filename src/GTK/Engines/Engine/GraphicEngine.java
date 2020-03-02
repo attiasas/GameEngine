@@ -1,6 +1,6 @@
-package Engines.Engine;
+package GTK.Engines.Engine;
 
-import Utils.GUI.Graphics.RGB;
+import GTK.Utils.GUI.Graphics.RGB;
 
 import java.awt.*;
 
@@ -12,7 +12,7 @@ public interface GraphicEngine
 {
     void drawToScreen();
 
-    //region Draw Utils
+    //region Draw GTK.Utils
     void setColor(int r, int g, int b);
     void setColor(RGB color);
     void setFont(String name, int style, int size);

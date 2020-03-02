@@ -1,7 +1,7 @@
-package Utils.GUI.UI;
+package GTK.Utils.GUI.UI;
 
-import Engines.Engine.GraphicEngine;
-import Utils.GUI.Graphics.RGB;
+import GTK.Engines.Engine.GraphicEngine;
+import GTK.Utils.GUI.Graphics.RGB;
 
 import java.awt.*;
 

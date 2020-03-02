@@ -1,6 +1,6 @@
-package Utils.GUI.UI;
+package GTK.Utils.GUI.UI;
 
-import Engines.Engine.GraphicEngine;
+import GTK.Engines.Engine.GraphicEngine;
 
 import java.awt.*;
 import java.util.ArrayList;

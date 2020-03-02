@@ -1,7 +1,8 @@
-package Engines.PC;
+package GTK.Engines.EngineTypes.PC;
 
-import Engines.*;
-import Engines.Engine.GameEngine;
+import GTK.Engines.Engine.IO.ActionEvent;
+import GTK.Engines.Engine.GameEngine;
+import GTK.Engines.GameState.GameState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,9 +17,20 @@ public class EnginePC extends GameEngine
     private JFrame frame;
     private JPanel panel;
 
-    public EnginePC(Game game)
+    private boolean listenKey;
+    private boolean listenMouse;
+
+    public EnginePC(GameState gameState)
     {
-        super(game);
+        this(gameState,true,true);
+    }
+
+    public EnginePC(GameState gameState, boolean listenKey, boolean listenMouse)
+    {
+        super(new GameStateManagerPC(),gameState);
+
+        this.listenKey = listenKey;
+        this.listenMouse = listenMouse;
     }
 
     public void constructFrame(int width, int height, String title)
@@ -29,9 +41,12 @@ public class EnginePC extends GameEngine
         panel.setFocusable(true);
         panel.requestFocus();
 
-        if(currentGame instanceof KeyListener) panel.addKeyListener((KeyListener) currentGame);
-        if(currentGame instanceof MouseListener) panel.addMouseListener((MouseListener) currentGame);
-        if(currentGame instanceof MouseMotionListener) panel.addMouseMotionListener((MouseMotionListener)currentGame);
+        if(listenKey)panel.addKeyListener((KeyListener) manager);
+        if(listenMouse)
+        {
+            panel.addMouseListener((MouseListener) manager);
+            panel.addMouseMotionListener((MouseMotionListener) manager);
+        }
 
         graphicEngine = new GraphicPC(width,height,panel);
 
@@ -46,7 +61,6 @@ public class EnginePC extends GameEngine
         setScreenHeight(height);
         gameTitle = title;
     }
-
 
     @Override
     public void setTitle(String title) {

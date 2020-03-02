@@ -1,4 +1,4 @@
-package Utils.GUI.UI;
+package GTK.Utils.GUI.UI;
 
 public interface UIActionListener
 {

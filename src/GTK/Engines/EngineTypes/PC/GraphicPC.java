@@ -1,7 +1,7 @@
-package Engines.PC;
+package GTK.Engines.EngineTypes.PC;
 
-import Engines.Engine.GraphicEngine;
-import Utils.GUI.Graphics.RGB;
+import GTK.Engines.Engine.GraphicEngine;
+import GTK.Utils.GUI.Graphics.RGB;
 
 import javax.swing.*;
 import java.awt.*;

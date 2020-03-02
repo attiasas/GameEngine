@@ -1,4 +1,4 @@
-package Utils.GUI.Graphics;
+package GTK.Utils.GUI.Graphics;
 
 import java.util.Objects;
 
