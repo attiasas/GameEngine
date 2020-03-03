@@ -8,8 +8,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * Created By: Assaf, On 24/02/2020
- * Description:
+ * Created By:      Assaf, On 24/02/2020
+ * Description:     Implementation of graphics engine for pc uses
  */
 public class GraphicPC implements GraphicEngine
 {
@@ -20,6 +20,12 @@ public class GraphicPC implements GraphicEngine
     private int width;
     private int height;
 
+    /**
+     * Constructor
+     * @param width - width of the screen panel
+     * @param height - height of the screen panel
+     * @param panel - JPanel of the GameEngine PC
+     */
     public GraphicPC(int width, int height, JPanel panel)
     {
         this.width = width;
@@ -30,6 +36,7 @@ public class GraphicPC implements GraphicEngine
         graphics = (Graphics2D) buffer.getGraphics();
     }
 
+    @Override
     public void drawToScreen()
     {
         Graphics graphics2 = panel.getGraphics();

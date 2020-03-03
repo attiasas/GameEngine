@@ -4,6 +4,17 @@ import java.io.*;
 import java.util.Hashtable;
 import java.util.Map;
 
+/**
+ * Created By:      Assaf, On 23/02/2020
+ * Description:     Properties Manager for programs.
+ *                  Can store key,value String pairs of information, load/save properties from files.
+ *
+ *                  * This is a singleton and grants access to the property from any class.
+ *
+ * File Syntax:     * '//' at the start of the line will be a comment.
+ *                  * the char: ':' is not allowed in both the key and the pair.
+ *                  * each property per line, in the format- "<KEY> : <VALUE>".
+ */
 public class Properties
 {
     private static Properties instance;
@@ -15,6 +26,11 @@ public class Properties
         properties = new Hashtable<>();
     }
 
+    /**
+     * Load a property file from the disk that matches the format.
+     * If The file is not matching the format an IllegalArgumentException will be thrown
+     * @param path - path of the property file.
+     */
     public static void load(String path)
     {
         instance = new Properties();
@@ -43,6 +59,11 @@ public class Properties
         }
     }
 
+    /**
+     * Saves the stored properties to a file in the format from the description.
+     * @param path - path (full name) of the file that will be saved, if the file exists irs content will be overwritten.
+     *               if the file not exists, a file will be generate.
+     */
     public static void save(String path)
     {
         if(instance == null) return;
@@ -66,6 +87,11 @@ public class Properties
         }
     }
 
+    /**
+     * Get The value of a property base on a given key
+     * @param key - of the value pair.
+     * @return the value of the property, if the key not exists in the properties null will be returned.
+     */
     public static String get(String key)
     {
         if(instance == null) instance = new Properties();
@@ -73,6 +99,11 @@ public class Properties
         return instance.properties.get(key);
     }
 
+    /**
+     * Put new property to the properties object.
+     * @param key - unique key that defies the property
+     * @param value - the value of the property
+     */
     public static void put(String key, String value)
     {
         if(!key.matches("[a-zA-Z\\d ]+") || !value.matches("[a-zA-Z\\d ]+")) throw new IllegalArgumentException("Key/Value contains only [a-z][A-Z][1-9][ ]");

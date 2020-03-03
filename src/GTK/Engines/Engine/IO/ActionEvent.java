@@ -1,5 +1,15 @@
 package GTK.Engines.Engine.IO;
 
+/**
+ * Created By:      Assaf, On 24/02/2020
+ * Description:     This class representing a unified input events from all types of controllers.
+ *                  This class allows to implement only once for all types of controllers or devices.
+ *                  Adapting all events to a single class.
+ *                  * While the flag consumed is not marked this event will be handled by lower states
+ *
+ * Types Handled:   Mouse,Keyboard,Touch.
+ * Events Handled:  Click,Press,Release,Movement,Dragging,Typing,Entering,Exiting.
+ */
 public class ActionEvent
 {
     private static int counter = 0;
@@ -164,6 +174,18 @@ public class ActionEvent
     public static final int VK_WINDOWS                  = 0x020C;
     //</editor-fold>
 
+    /**
+     * Constructor
+     * @param type - Type of the controller that fired the event
+     * @param event - Type of the event that was fired
+     * @param x - x position of the controller coordinates if needed
+     * @param y - y position of the controller coordinates if needed
+     * @param keyCode  - key code of the event that was fired if needed
+     * @param isAltDown - is alt key was down when the event fired if exist
+     * @param isControlDown - is control key was down when the event fired if exist
+     * @param isShiftDown - is shift key was down when the event fired if exist
+     * @param createdTime - the time that the event fired
+     */
     public ActionEvent(Type type,Event event, float x, float y,int keyCode,boolean isAltDown, boolean isControlDown, boolean isShiftDown, long createdTime)
     {
         ID = counter++;

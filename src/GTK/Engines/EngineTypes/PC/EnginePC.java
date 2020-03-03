@@ -1,6 +1,5 @@
 package GTK.Engines.EngineTypes.PC;
 
-import GTK.Engines.Engine.IO.ActionEvent;
 import GTK.Engines.Engine.GameEngine;
 import GTK.Engines.GameState.GameState;
 
@@ -9,8 +8,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * Created By: Assaf, On 24/02/2020
- * Description:
+ * Created By:      Assaf, On 24/02/2020
+ * Description:     Game Engine for PC platforms.
+ *
+ * Using:           * GameStateManager - GameStateManagerPC (potential inputs: Keyboard, Mouse)
+ *                  * GraphicEngine - Graphic engine using Jframe and Jpanel.
  */
 public class EnginePC extends GameEngine
 {
@@ -20,11 +22,21 @@ public class EnginePC extends GameEngine
     private boolean listenKey;
     private boolean listenMouse;
 
+    /**
+     * Constructor for Game Engine PC that listen to keyboard and mouse events
+     * @param gameState - initial state when loading the engine
+     */
     public EnginePC(GameState gameState)
     {
         this(gameState,true,true);
     }
 
+    /**
+     * Constructor for the engine with optional parameters
+     * @param gameState - initial state when loading the engine
+     * @param listenKey - is the engine listening to keyboard events
+     * @param listenMouse - is the engine listening to mouse events
+     */
     public EnginePC(GameState gameState, boolean listenKey, boolean listenMouse)
     {
         super(new GameStateManagerPC(),gameState);
@@ -33,6 +45,7 @@ public class EnginePC extends GameEngine
         this.listenMouse = listenMouse;
     }
 
+    @Override
     public void constructFrame(int width, int height, String title)
     {
         panel = new JPanel();

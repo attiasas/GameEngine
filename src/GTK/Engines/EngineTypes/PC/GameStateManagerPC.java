@@ -5,14 +5,29 @@ import GTK.Engines.Engine.IO.ActionEvent;
 
 import java.awt.event.*;
 
-
+/**
+ * Created By:      Assaf, On 24/02/2020
+ * Description:     Game State Manager for adapting mouse and keyboard inputs
+ */
 public class GameStateManagerPC extends GameStateManager implements KeyListener, MouseListener, MouseMotionListener
 {
+    /**
+     * Create Action Event base on a Mouse Event
+     * @param event - type of event that occur
+     * @param mEvent - current mouse event
+     * @return - adapted action event
+     */
     private ActionEvent mouseEvent(ActionEvent.Event event, MouseEvent mEvent)
     {
         return new ActionEvent(ActionEvent.Type.MOUSE,event,mEvent.getX(),mEvent.getY(),-1,mEvent.isAltDown(),mEvent.isControlDown(),mEvent.isShiftDown(),mEvent.getWhen());
     }
 
+    /**
+     * Create Action Event base on a Key Event
+     * @param event - type of event that occur
+     * @param kEvent - current key event
+     * @return - adapted action event
+     */
     private ActionEvent keyEvent(ActionEvent.Event event, KeyEvent kEvent)
     {
         return new ActionEvent(ActionEvent.Type.KEYBOARD,event,0,0,kEvent.getKeyCode(),kEvent.isAltDown(),kEvent.isControlDown(),kEvent.isShiftDown(),kEvent.getWhen());
